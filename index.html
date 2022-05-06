@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="searchContainer">
+            <input type="text" name="location" id="locationInput" required pattern="[A-Za-z]{3}" placeholder="New York">
+            <p id="locationError">Please enter a location</p>
+            <button id="search">Search</button>
+        </div>
+        <div class="unitContainer">
+            <img class="celsius" src="" alt="Celsius">
+            <div class="sliderContainer form_Field_Inline">
+                <label class="switch">
+                    <input type="checkbox" name="favorite" value="true">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <img class="fahrenheit" src="" alt="Fahrenheit">
+        </div>
+    </header>
+    <script src="main.js"></script>
+</body>
+</html>
