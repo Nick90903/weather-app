@@ -6,4 +6,16 @@ function searchButton() {
   });
 }
 
-export { searchButton };
+function unitsChanged() {
+  const slider = document.querySelector("#slider");
+  slider.addEventListener("click", function () {
+    fetchLocationData();
+  });
+}
+
+function addListeners() {
+  searchButton();
+  unitsChanged();
+}
+
+export { addListeners };
