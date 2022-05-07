@@ -18,6 +18,10 @@ header {
     align-items: center;
 }
 
+.weekContainer {
+    display: flex;
+}
+
 
 
 
