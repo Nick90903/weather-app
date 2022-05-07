@@ -1,9 +1,8 @@
+import { da } from "date-fns/locale";
 import { capitalize, convert3Day, retrieveDate } from "./utilities";
 
-function updateDisplay(data) {}
-
 // Draws todays weather.
-function updateDaily(data) {
+async function updateDaily(data) {
   clearDom(".dateContainer");
   clearDom(".weatherContainer");
   // Gets full date information
@@ -59,15 +58,37 @@ function updateDaily(data) {
   container.appendChild(weatherContainer);
 }
 
+// Draws weekly weather
 function updateWeekly(data) {
-  for (let i = 1; i <= 7; i++) {
-    const container = document.querySelector(`day${i}`);
+  clearDom(".weeklyItems");
+  for (let i = 0; i <= 7; i++) {
+    let date = retrieveDate(data.daily[i].dt, data.timezone_offset);
+
+    const container = document.querySelector(`.day${i}`);
 
     const daytitle = document.createElement("p");
     daytitle.classList.add("dayTitle");
+    daytitle.classList.add("weeklyItems");
+    daytitle.textContent = convert3Day(date);
+    container.appendChild(daytitle);
 
-    //retrieveDate(data.current.dt, data.timezone_offset);
-    //console.log("update weekly");
+    const high = document.createElement("p");
+    high.classList.add("high");
+    high.classList.add("weeklyItems");
+    high.textContent = data.daily[i].temp.max;
+    container.appendChild(high);
+
+    const low = document.createElement("p");
+    low.classList.add("low");
+    low.classList.add("weeklyItems");
+    low.textContent = data.daily[i].temp.min;
+    container.appendChild(low);
+
+    const description = document.createElement("p");
+    description.classList.add("dailyDescription");
+    description.classList.add("weeklyItems");
+    description.textContent = capitalize(data.daily[i].weather[0].description);
+    container.appendChild(description);
   }
 }
 

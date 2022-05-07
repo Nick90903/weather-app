@@ -6,8 +6,9 @@ const apiKey = "148038350c8c51c279a4db7eee4a3ad5";
 
 async function fetchLocationData() {
   const input = document.querySelector("#locationInput");
+  let temp = "flint";
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${input.value}&limit=2&appid=${apiKey}`,
+    `http://api.openweathermap.org/geo/1.0/direct?q=${temp}&limit=2&appid=${apiKey}`,
     { mode: "cors" }
   );
   const returnData = await response.json();

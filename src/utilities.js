@@ -1,13 +1,11 @@
 import fromUnixTime from "date-fns/fromUnixTime";
 
 function retrieveDate(unix, offset) {
-  console.log(`Unix: ${unix}, Offset: ${offset}`);
   let date = fromUnixTime(unix + offset).toUTCString();
   return date;
 }
 
 function convert3Day(short) {
-  console.log(short + " Short");
   switch (short.slice(0, 3)) {
     case "Mon":
       return "Monday";
