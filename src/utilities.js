@@ -39,4 +39,8 @@ function convert3Day(short) {
   }
 }
 
-export { retrieveDate, convert3Day };
+function capitalize(toFix) {
+  return toFix[0].toUpperCase() + toFix.substring(1);
+}
+
+export { retrieveDate, convert3Day, capitalize };

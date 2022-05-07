@@ -1,4 +1,4 @@
-import { convert3Day, retrieveDate } from "./utilities";
+import { capitalize, convert3Day, retrieveDate } from "./utilities";
 
 function updateDisplay(data) {}
 
@@ -50,6 +50,11 @@ function updateDaily(data) {
   humidity.classList.add("humidity");
   humidity.textContent = "Humidity: " + data.current.humidity;
   weatherContainer.appendChild(humidity);
+
+  const forecast = document.createElement("p");
+  forecast.classList.add("forecast");
+  forecast.textContent = capitalize(data.current.weather[0].description);
+  weatherContainer.appendChild(forecast);
 
   container.appendChild(weatherContainer);
 }
