@@ -1,3 +1,7 @@
+body {
+    background-color: grey;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -6,7 +10,7 @@ header {
 
 #locationError {
     margin: 0px;
-    color: red;
+    color: rgb(228, 228, 228);
 }
 
 .unitContainer {

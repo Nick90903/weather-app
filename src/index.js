@@ -1,4 +1,6 @@
+import { getDate } from "date-fns";
 import { addListeners } from "./buttonHandler";
+import { updateDaily, updateWeekly } from "./dom";
 
 const apiKey = "148038350c8c51c279a4db7eee4a3ad5";
 
@@ -26,6 +28,8 @@ async function fetchWeatherData(lat, lon) {
   console.log(unit());
   const returnData = await response.json();
   console.log(returnData);
+  updateWeekly(returnData);
+  updateDaily(returnData);
 }
 
 function unit() {
