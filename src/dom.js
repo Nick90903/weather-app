@@ -61,7 +61,7 @@ async function updateDaily(data) {
 // Draws weekly weather
 function updateWeekly(data) {
   clearDom(".weeklyItems");
-  for (let i = 0; i <= 7; i++) {
+  for (let i = 1; i <= 7; i++) {
     let date = retrieveDate(data.daily[i].dt, data.timezone_offset);
 
     const container = document.querySelector(`.day${i}`);

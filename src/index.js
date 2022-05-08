@@ -1,19 +1,33 @@
-import { getDate } from "date-fns";
 import { addListeners } from "./buttonHandler";
 import { updateDaily, updateWeekly } from "./dom";
+import { capitalize } from "./utilities";
 
 const apiKey = "148038350c8c51c279a4db7eee4a3ad5";
 
+function getDataFromForm() {
+  let input = document.querySelector("#locationInput");
+  let cityName = input.value;
+
+  if (cityName) {
+    return cityName
+      .replace(/(\s+$|^\s+)/g, "") // remove whitespace from begining and end of string
+      .replace(/(,\s+)/g, ",") // remove any white space that follows a comma
+      .replace(/(\s+,)/g, ",") // remove any white space that preceeds a comma
+      .replace(/\s+/g, "+"); // replace any remaining white space with +, so it works in api call
+  }
+  return "";
+}
+
 async function fetchLocationData() {
-  const input = document.querySelector("#locationInput");
   let temp = "flint";
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${temp}&limit=2&appid=${apiKey}`,
+    `http://api.openweathermap.org/geo/1.0/direct?q=${temp}&limit=20&appid=${apiKey}`,
     { mode: "cors" }
   );
   const returnData = await response.json();
   const lat = returnData[0].lat;
   const lon = returnData[0].lon;
+  console.log(returnData);
   console.log(`Location Data: ${lat}, ${lon}`);
   fetchWeatherData(lat, lon);
 }
@@ -43,5 +57,6 @@ function unit() {
 }
 
 addListeners();
+fetchLocationData();
 
 export { fetchLocationData };
